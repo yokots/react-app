@@ -1,0 +1,22 @@
+@import "variables";
+
+%red-border {
+  border: 1px solid red;
+}
+
+.container {
+  @util center;
+
+  height: 100%;
+  background-color: aquamarine;
+
+  & button {
+    width: 100px;
+    padding: 5px;
+    font-size: var(--big-font-size);
+  }
+
+  & button:matches(:hover, :active) {
+    @extend %red-border;
+  }
+}

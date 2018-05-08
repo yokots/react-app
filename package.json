@@ -1,0 +1,107 @@
+{
+  "name": "cssnext",
+  "version": "1.0.0",
+  "description": "react cssnext",
+  "keywords": [
+    "react",
+    "typescript",
+    "postcss",
+    "cssnext"
+  ],
+  "author": "wanghaodong",
+  "license": "MIT",
+  "scripts": {
+    "start": "sh ./scripts/dev.sh hmr",
+    "dev": "sh ./scripts/dev.sh development",
+    "inspect": "sh ./scripts/build.sh inspect",
+    "build": "sh ./scripts/build.sh production"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -e $GIT_PARAMS"
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ],
+    "rules": {
+      "header-max-length": [
+        2,
+        "always",
+        120
+      ]
+    }
+  },
+  "lint-staged": {
+    "*.{css,scss}": "stylelint",
+    "*.{ts,tsx}": [
+      "tslint -p . --fix",
+      "git add"
+    ],
+    "*.{png,jpg,jped,gif,svg}": [
+      "imagemin-lint-staged",
+      "git add"
+    ]
+  },
+  "browserslist": [
+    "last 5 versions",
+    "> 5% in CN",
+    "not ie <= 10"
+  ],
+  "dependencies": {
+    "axios": "^0.18.0",
+    "core-js": "^2.5.6",
+    "normalize.css": "^8.0.0",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
+    "react-loadable": "^5.4.0",
+    "react-router-dom": "^4.2.2",
+    "tslib": "^1.9.0"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^6.2.0",
+    "@commitlint/config-conventional": "^6.1.3",
+    "@gago/stylelint-config": "^1.0.2",
+    "@gago/tslint-config-react": "^1.1.1",
+    "@types/node": "^8.10.12",
+    "@types/react": "^16.3.13",
+    "@types/react-dom": "^16.0.5",
+    "@types/react-hot-loader": "^3.0.6",
+    "@types/react-loadable": "^5.3.4",
+    "@types/react-router-dom": "^4.2.6",
+    "@types/webpack": "^4.1.4",
+    "autoprefixer": "^8.4.1",
+    "clean-webpack-plugin": "^0.1.19",
+    "css-loader": "^0.28.11",
+    "fork-ts-checker-webpack-plugin": "^0.4.1",
+    "happypack": "^5.0.0",
+    "html-webpack-plugin": "^3.2.0",
+    "husky": "^1.0.0-rc.2",
+    "imagemin-lint-staged": "^0.3.0",
+    "lint-staged": "^7.1.0",
+    "mini-css-extract-plugin": "^0.4.0",
+    "postcss-cssnext": "^3.1.0",
+    "postcss-extend-rule": "^1.1.0",
+    "postcss-flexbugs-fixes": "^3.3.1",
+    "postcss-import": "^11.1.0",
+    "postcss-loader": "^2.1.5",
+    "postcss-utilities": "^0.8.0",
+    "react-hot-loader": "^3.1.3",
+    "script-ext-html-webpack-plugin": "^2.0.1",
+    "source-map-loader": "^0.2.3",
+    "style-loader": "^0.21.0",
+    "stylelint": "^9.2.0",
+    "ts-loader": "^4.3.0",
+    "ts-node": "^6.0.3",
+    "tsconfig-paths": "^3.3.2",
+    "tslint": "^5.10.0",
+    "typescript": "^2.8.3",
+    "uglifyjs-webpack-plugin": "^1.2.5",
+    "url-loader": "^1.0.1",
+    "webpack": "^4.8.1",
+    "webpack-cli": "^2.1.3",
+    "webpack-dev-server": "^3.1.4"
+  }
+}
