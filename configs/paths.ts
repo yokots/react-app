@@ -29,3 +29,5 @@ export const TSCONFIG_PATH = resolve(__dirname, '../tsconfig.json');
 export const POSTCSS_CONFIG_PATH = resolve(__dirname, 'postcss.config.js');
 
 export const TEMPLATE_PATH = resolveSource('index.html');
+
+export const TS_CUSTOM_TRANSFORMER_PATH = resolve(__dirname, 'ts-custom-transformer.js');

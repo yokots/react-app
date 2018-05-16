@@ -20,14 +20,18 @@ const sourceMapLoaderRule: Rule = {
 const fileLoaderRule: Rule = {
   test: /\.(jpe?g|png|gif|svg)$/,
   loader: 'file-loader',
-  options: { name: 'images/[name].[ext]' },
+  options: {
+    name: 'images/[name].[ext]',
+    publicPath: '/',
+  },
 };
 
 const urlLoaderRule: Rule = {
   test: /\.(jpe?g|png|gif|svg)$/,
   loader: 'url-loader',
   options: {
-    name: 'images/[name].[hash:8].[ext]',
+    name: 'images/[hash:8].[ext]',
+    publicPath: '/',
     limit: 10000,
   },
 };
@@ -77,6 +81,24 @@ const extractCSSRule: Rule = {
   ],
 };
 
+const extractLibCSSRule: Rule = {
+  test: /\.css$/,
+  include: NM_PATH,
+  use: [
+    MiniCssExtractPlugin.loader,
+    {
+      loader: 'css-loader',
+      options: {
+        minimize: {
+          discardComments: {
+            removeAll: true,
+          },
+        },
+      },
+    },
+    postcssLoader,
+  ],
+}
 const inlineStyleRule: Rule = {
   test: /\.css$/,
   use: [
@@ -86,10 +108,17 @@ const inlineStyleRule: Rule = {
   ],
 };
 
+const inlineLibStyleRule: Rule = {
+  test: /\.css$/,
+  include: NM_PATH,
+  use: ['style-loader', 'css-loader'],
+}
+
 const rules: Rule[] = [
   sourceMapLoaderRule,
   tsLoaderRule,
   inlineStyleRule,
+  inlineLibStyleRule,
 ];
 
 export function module(env: string): Module {
@@ -114,8 +143,9 @@ export function module(env: string): Module {
       },
     };
     postcssLoader.options.sourceMap = false;
-    inlineStyleRule.exclude = extractCSSFiles;
-    rules.push(urlLoaderRule, extractCSSRule);
+    inlineStyleRule.exclude = extractCSSFiles.concat(NM_PATH);
+    rules.pop();
+    rules.push(urlLoaderRule, extractCSSRule, extractLibCSSRule);
   } else {
     rules.push(fileLoaderRule);
   }

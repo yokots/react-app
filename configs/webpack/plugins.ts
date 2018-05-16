@@ -8,7 +8,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 
 import { Env, Config } from '../env';
-import { TSCONFIG_PATH, TEMPLATE_PATH } from '../paths';
+import { TSCONFIG_PATH, TEMPLATE_PATH, TS_CUSTOM_TRANSFORMER_PATH } from '../paths';
 
 const commonPlugins: webpack.Plugin[] = [
   new CleanWebpackPlugin(['dist'], { root: process.cwd() }),
@@ -20,6 +20,7 @@ const commonPlugins: webpack.Plugin[] = [
       options: {
         configFile: TSCONFIG_PATH,
         happyPackMode: true,
+        getCustomTransformers: TS_CUSTOM_TRANSFORMER_PATH,
       },
     }],
   }),
