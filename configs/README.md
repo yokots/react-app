@@ -42,7 +42,7 @@
 
 - [postcss-extend-rule](https://github.com/jonathantneal/postcss-extend-rule)
 
-- [cssnext](http://cssnext.io/)
+- [postcss-preset-env](https://preset-env.cssdb.org/)
 
 - [autoprefixer](https://github.com/postcss/autoprefixer) *生产环境开启*
 

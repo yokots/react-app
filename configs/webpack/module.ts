@@ -101,6 +101,7 @@ const extractLibCSSRule: Rule = {
 }
 const inlineStyleRule: Rule = {
   test: /\.css$/,
+  exclude: NM_PATH,
   use: [
     styleLoader,
     cssLoader,
@@ -130,8 +131,9 @@ export function module(env: string): Module {
   }
 
   if (env === Env.Inspect) {
-    inlineStyleRule.exclude = extractCSSFiles;
-    rules.push(extractCSSRule);
+    inlineStyleRule.exclude = extractCSSFiles.concat(NM_PATH);
+    rules.pop();
+    rules.push(extractCSSRule, extractLibCSSRule);
   }
 
   if (env === Env.Production) {

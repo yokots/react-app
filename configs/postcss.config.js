@@ -7,10 +7,9 @@ const config = {
       centerMethod: 'flexbox'
     },
     'postcss-extend-rule': {},
-    'postcss-cssnext': {
-      features: {
-        autoprefixer: false,
-      },
+    'postcss-preset-env': {
+      stage: 0,
+      autoprefixer: false
     }
   }
 };

@@ -1,5 +1,6 @@
 import React, { SFC } from 'react';
 import { RouteComponentProps } from 'react-router-dom';
+import { Button } from 'antd';
 
 import { HttpClient } from '../http';
 import { UserService } from '../user.service';
@@ -20,7 +21,7 @@ export const LoginComponent: SFC<RouteComponentProps<void>> = (props) => {
 
   return (
     <div className={styles.container}>
-      <button onClick={login}>login</button>
+      <Button type="primary" onClick={login}>login</Button>
     </div>
   );
 };
