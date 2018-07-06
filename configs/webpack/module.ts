@@ -22,16 +22,25 @@ const fileLoaderRule: Rule = {
   loader: 'file-loader',
   options: {
     name: 'images/[name].[ext]',
-    publicPath: '/',
+    publicPath: '',
   },
 };
+
+const fontLoaderRule: Rule = {
+  test: /\.(eot|ttf|woff|woff2)$/,
+  loader: 'file-loader',
+  options: {
+    name: 'fonts/[name].[ext]',
+    publicPath: '../',
+  },
+}
 
 const urlLoaderRule: Rule = {
   test: /\.(jpe?g|png|gif|svg)$/,
   loader: 'url-loader',
   options: {
     name: 'images/[hash:8].[ext]',
-    publicPath: '/',
+    publicPath: '',
     limit: 10000,
   },
 };
@@ -118,6 +127,7 @@ const inlineLibStyleRule: Rule = {
 const rules: Rule[] = [
   sourceMapLoaderRule,
   tsLoaderRule,
+  fontLoaderRule,
   inlineStyleRule,
   inlineLibStyleRule,
 ];
