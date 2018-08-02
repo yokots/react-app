@@ -35,7 +35,10 @@
     }
   },
   "lint-staged": {
-    "*.{css,scss}": "stylelint",
+    "*.{css,scss}": [
+      "stylelint --fix",
+      "git add"
+    ],
     "*.{ts,tsx}": [
       "tslint -p . --fix",
       "git add"
@@ -63,7 +66,7 @@
   "devDependencies": {
     "@commitlint/cli": "^7.0.0",
     "@commitlint/config-conventional": "^7.0.1",
-    "@gago/stylelint-config": "^1.0.3",
+    "@gago/stylelint-config": "^1.0.4",
     "@gago/tslint-config-react": "^1.2.3",
     "@types/node": "^8.10.23",
     "@types/react": "^16.4.7",
