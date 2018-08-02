@@ -40,7 +40,7 @@
       "tslint -p . --fix",
       "git add"
     ],
-    "*.{png,jpg,jped,gif,svg}": [
+    "*.{png,jpg,jpeg,gif,svg}": [
       "imagemin-lint-staged",
       "git add"
     ]
