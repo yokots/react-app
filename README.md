@@ -1,7 +1,7 @@
 ## README
 
 ```
-├── .vsocde                   推荐的 vscode 配置和插件
+├── .vscode                   推荐的 vscode 配置和插件
 ├── configs                   配置文件目录
 ├── dist                      打包后的文件目录
 ├── mock                      mock 文件目录
@@ -26,11 +26,13 @@
 * 克隆
 
   - 使用 css
+
     ```bash
     git clone http://git.azure.gagogroup.cn/efficiency/typescript-react.git your-project-name --depth 1 -b master
     ```
 
   - 使用 scss
+
     ```bash
     git clone http://git.azure.gagogroup.cn/efficiency/typescript-react.git your-project-name --depth 1 -b sass
     ```
